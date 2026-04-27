@@ -53,12 +53,36 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
+    .nav-right {
+      display: flex; align-items: center; gap: 2rem;
+    }
+
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       color: var(--muted); text-decoration: none; font-size: 0.9rem;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--orange); }
+
+    /* ── LANG TOGGLE ── */
+    #lang-toggle {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Fira Code', monospace;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    #lang-toggle:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
 
     /* ── HERO ── */
     #hero {
@@ -355,13 +379,16 @@
 <!-- NAV -->
 <nav>
   <span class="nav-logo">André Pereira</span>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#homelab">Homelab</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n="nav-about">About</a></li>
+      <li><a href="#skills" data-i18n="nav-skills">Skills</a></li>
+      <li><a href="#projects" data-i18n="nav-projects">Projects</a></li>
+      <li><a href="#homelab" data-i18n="nav-homelab">Homelab</a></li>
+      <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+    </ul>
+    <button id="lang-toggle" onclick="toggleLang()" title="Switch language / Mudar idioma">PT</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -369,39 +396,39 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-tag">Open to work 🚀</div>
-    <h1 class="hero-name">Hi, I'm <span>André Pereira</span></h1>
-    <p class="hero-role">Full-Stack & Mobile Developer · Portugal 🇵🇹</p>
-    <p class="hero-desc">
+    <div class="hero-tag" data-i18n="hero-tag">Open to work 🚀</div>
+    <h1 class="hero-name" data-i18n="hero-name">Hi, I'm <span>André Pereira</span></h1>
+    <p class="hero-role" data-i18n="hero-role">Full-Stack &amp; Mobile Developer · Portugal 🇵🇹</p>
+    <p class="hero-desc" data-i18n="hero-desc">
       I build web apps, Android apps and desktop software.
       Self-taught, just finished secondary school, already shipped real projects.
     </p>
     <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="mailto:afopereira10@gmail.com" class="btn btn-secondary">Contact Me</a>
+      <a href="#projects" class="btn btn-primary" data-i18n="hero-btn-projects">View Projects</a>
+      <a href="mailto:afopereira10@gmail.com" class="btn btn-secondary" data-i18n="hero-btn-contact">Contact Me</a>
     </div>
   </div>
-  <div class="hero-scroll">scroll</div>
+  <div class="hero-scroll" data-i18n="hero-scroll">scroll</div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <p class="section-label">// about</p>
-  <h2 class="section-title">Who I <span>Am</span></h2>
+  <p class="section-label" data-i18n="about-label">// about</p>
+  <h2 class="section-title" data-i18n="about-title">Who I <span>Am</span></h2>
   <div class="about-grid reveal">
     <div class="about-text">
-      <p>
+      <p data-i18n="about-p1">
         I'm a self-taught developer from Portugal who just finished secondary school.
         Instead of waiting to learn at university, I spent the last two years building
         <strong>real projects</strong> — a full SaaS gym platform and a desktop app
         delivered to a real company during my internship.
       </p>
-      <p>
+      <p data-i18n="about-p2">
         I'm comfortable across the full stack: PHP backends, REST APIs, vanilla JS frontends,
         Flutter mobile apps, and C# desktop software. Outside of code, I run a
         <strong>Proxmox homelab</strong> with Home Assistant and enjoy audio and lighting setups.
       </p>
-      <p>
+      <p data-i18n="about-p3">
         I'm looking for my <strong>first professional role</strong> where I can keep
         building things that matter.
       </p>
@@ -409,19 +436,19 @@
     <div class="about-stats">
       <div class="stat-box">
         <div class="num">2</div>
-        <div class="label">Projects Shipped</div>
+        <div class="label" data-i18n="stat-shipped">Projects Shipped</div>
       </div>
       <div class="stat-box">
         <div class="num">1</div>
-        <div class="label">Internship</div>
+        <div class="label" data-i18n="stat-internship">Internship</div>
       </div>
       <div class="stat-box">
         <div class="num">5+</div>
-        <div class="label">Technologies</div>
+        <div class="label" data-i18n="stat-tech">Technologies</div>
       </div>
       <div class="stat-box">
         <div class="num">PT</div>
-        <div class="label">Based in Portugal</div>
+        <div class="label" data-i18n="stat-based">Based in Portugal</div>
       </div>
     </div>
   </div>
@@ -429,11 +456,11 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <p class="section-label">// skills</p>
-  <h2 class="section-title">Tech <span>Stack</span></h2>
+  <p class="section-label" data-i18n="skills-label">// skills</p>
+  <h2 class="section-title" data-i18n="skills-title">Tech <span>Stack</span></h2>
   <div class="skills-grid reveal">
     <div class="skill-group">
-      <div class="skill-group-title">Backend</div>
+      <div class="skill-group-title" data-i18n="skill-backend">Backend</div>
       <div class="skill-tags">
         <span class="tag">PHP 8.1</span>
         <span class="tag">MySQL 8</span>
@@ -442,7 +469,7 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Frontend</div>
+      <div class="skill-group-title" data-i18n="skill-frontend">Frontend</div>
       <div class="skill-tags">
         <span class="tag">HTML5</span>
         <span class="tag">CSS3</span>
@@ -450,7 +477,7 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Mobile</div>
+      <div class="skill-group-title" data-i18n="skill-mobile">Mobile</div>
       <div class="skill-tags">
         <span class="tag">Flutter 3</span>
         <span class="tag">Dart</span>
@@ -459,7 +486,7 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Desktop</div>
+      <div class="skill-group-title" data-i18n="skill-desktop">Desktop</div>
       <div class="skill-tags">
         <span class="tag">C#</span>
         <span class="tag">Windows Forms</span>
@@ -467,7 +494,7 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Integrations</div>
+      <div class="skill-group-title" data-i18n="skill-integrations">Integrations</div>
       <div class="skill-tags">
         <span class="tag">Stripe</span>
         <span class="tag">OpenAI</span>
@@ -475,7 +502,7 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Tools</div>
+      <div class="skill-group-title" data-i18n="skill-tools">Tools</div>
       <div class="skill-tags">
         <span class="tag">Git</span>
         <span class="tag">GitHub</span>
@@ -488,8 +515,8 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <p class="section-label">// projects</p>
-  <h2 class="section-title">What I've <span>Built</span></h2>
+  <p class="section-label" data-i18n="projects-label">// projects</p>
+  <h2 class="section-title" data-i18n="projects-title">What I've <span>Built</span></h2>
   <div class="projects-grid">
 
     <!-- FitLife -->
@@ -503,10 +530,10 @@
       <div class="project-body">
         <div>
           <div class="project-meta">
-            <span class="project-badge badge-open">Open Source</span>
+            <span class="project-badge badge-open" data-i18n="fitlife-badge">Open Source</span>
           </div>
-          <h3 class="project-title">🏋️ FitLife Gym</h3>
-          <p class="project-desc">
+          <h3 class="project-title" data-i18n="fitlife-title">🏋️ FitLife Gym</h3>
+          <p class="project-desc" data-i18n="fitlife-desc">
             Full-stack SaaS-style gym management platform with three role-based dashboards
             (Admin, Trainer, Client) and a companion Flutter Android app.
             Integrates Stripe payments, OpenAI and email notifications.
@@ -521,7 +548,7 @@
           </div>
         </div>
         <div class="project-links">
-          <a href="https://github.com/ManoDre-27/fitlife-gym" target="_blank" class="project-link link-primary">View Repo</a>
+          <a href="https://github.com/ManoDre-27/fitlife-gym" target="_blank" class="project-link link-primary" data-i18n="fitlife-link">View Repo</a>
         </div>
       </div>
     </div>
@@ -531,11 +558,11 @@
       <div class="project-body">
         <div>
           <div class="project-meta">
-            <span class="project-badge badge-private">Private</span>
-            <span class="project-badge badge-internship">Internship @ Newness</span>
+            <span class="project-badge badge-private" data-i18n="newness-badge1">Private</span>
+            <span class="project-badge badge-internship" data-i18n="newness-badge2">Internship @ Newness</span>
           </div>
-          <h3 class="project-title">🔐 Password & Invoice Manager</h3>
-          <p class="project-desc">
+          <h3 class="project-title" data-i18n="newness-title">🔐 Password &amp; Invoice Manager</h3>
+          <p class="project-desc" data-i18n="newness-desc">
             Desktop application built during my internship at <strong>Newness</strong>,
             a Portuguese company. Manages internal credentials and invoices in a single
             secure interface. Delivered and used in production.
@@ -547,7 +574,7 @@
           </div>
         </div>
         <div class="project-links">
-          <span class="project-link link-secondary" style="cursor:default">Private — Internship Agreement</span>
+          <span class="project-link link-secondary" style="cursor:default" data-i18n="newness-link">Private — Internship Agreement</span>
         </div>
       </div>
     </div>
@@ -557,10 +584,10 @@
       <div class="project-body">
         <div>
           <div class="project-meta">
-            <span class="project-badge badge-open">Open Source</span>
+            <span class="project-badge badge-open" data-i18n="passvb-badge">Open Source</span>
           </div>
-          <h3 class="project-title">🔑 Password Manager Desktop</h3>
-          <p class="project-desc">
+          <h3 class="project-title" data-i18n="passvb-title">🔑 Password Manager Desktop</h3>
+          <p class="project-desc" data-i18n="passvb-desc">
             Full-featured Windows desktop app for managing passwords and client records.
             Includes login system, categorised password vault, statistics dashboard,
             Crystal Reports integration and configurable ODBC database connection.
@@ -573,7 +600,7 @@
           </div>
         </div>
         <div class="project-links">
-          <a href="https://github.com/ManoDre-27/password-manager-vb" target="_blank" class="project-link link-primary">View Repo</a>
+          <a href="https://github.com/ManoDre-27/password-manager-vb" target="_blank" class="project-link link-primary" data-i18n="passvb-link">View Repo</a>
         </div>
       </div>
     </div>
@@ -583,10 +610,10 @@
       <div class="project-body">
         <div>
           <div class="project-meta">
-            <span class="project-badge badge-open">Open Source</span>
+            <span class="project-badge badge-open" data-i18n="estate-badge">Open Source</span>
           </div>
-          <h3 class="project-title">🏠 Real Estate Manager</h3>
-          <p class="project-desc">
+          <h3 class="project-title" data-i18n="estate-title">🏠 Real Estate Manager</h3>
+          <p class="project-desc" data-i18n="estate-desc">
             C# console application for managing property listings with full CRUD operations.
             Add, edit, delete, list and search properties by name.
             Demonstrates struct usage, array manipulation and clean menu-driven architecture.
@@ -598,7 +625,7 @@
           </div>
         </div>
         <div class="project-links">
-          <a href="https://github.com/ManoDre-27/real-estate-manager" target="_blank" class="project-link link-primary">View Repo</a>
+          <a href="https://github.com/ManoDre-27/real-estate-manager" target="_blank" class="project-link link-primary" data-i18n="estate-link">View Repo</a>
         </div>
       </div>
     </div>
@@ -608,10 +635,10 @@
       <div class="project-body">
         <div>
           <div class="project-meta">
-            <span class="project-badge badge-open">Open Source</span>
+            <span class="project-badge badge-open" data-i18n="euro-badge">Open Source</span>
           </div>
-          <h3 class="project-title">🎰 Euromilhões Simulator</h3>
-          <p class="project-desc">
+          <h3 class="project-title" data-i18n="euro-title">🎰 Euromilhões Simulator</h3>
+          <p class="project-desc" data-i18n="euro-desc">
             C# console app that simulates a Euromilhões lottery draw.
             Generates random numbers and stars, then sorts them using a
             hand-written BubbleSort algorithm.
@@ -623,7 +650,7 @@
           </div>
         </div>
         <div class="project-links">
-          <a href="https://github.com/ManoDre-27/euromilhoes-simulator" target="_blank" class="project-link link-primary">View Repo</a>
+          <a href="https://github.com/ManoDre-27/euromilhoes-simulator" target="_blank" class="project-link link-primary" data-i18n="euro-link">View Repo</a>
         </div>
       </div>
     </div>
@@ -633,46 +660,237 @@
 
 <!-- HOMELAB -->
 <section id="homelab">
-  <p class="section-label">// beyond code</p>
-  <h2 class="section-title">My <span>Homelab</span></h2>
+  <p class="section-label" data-i18n="homelab-label">// beyond code</p>
+  <h2 class="section-title" data-i18n="homelab-title">My <span>Homelab</span></h2>
   <div class="homelab-grid reveal">
     <div class="homelab-card">
       <div class="homelab-icon">🖥️</div>
-      <div class="homelab-title">Proxmox Server</div>
-      <div class="homelab-desc">Home server running multiple VMs and LXC containers. Self-host everything I can.</div>
+      <div class="homelab-title" data-i18n="homelab-proxmox-title">Proxmox Server</div>
+      <div class="homelab-desc" data-i18n="homelab-proxmox-desc">Home server running multiple VMs and LXC containers. Self-host everything I can.</div>
     </div>
     <div class="homelab-card">
       <div class="homelab-icon">🏠</div>
-      <div class="homelab-title">Home Assistant</div>
-      <div class="homelab-desc">Full home automation — lights, scenes, routines and integrations across devices.</div>
+      <div class="homelab-title" data-i18n="homelab-ha-title">Home Assistant</div>
+      <div class="homelab-desc" data-i18n="homelab-ha-desc">Full home automation — lights, scenes, routines and integrations across devices.</div>
     </div>
     <div class="homelab-card">
       <div class="homelab-icon">🔊</div>
-      <div class="homelab-title">Audio & Lighting</div>
-      <div class="homelab-desc">Sound systems, smart LED setups and ambiance control wired into Home Assistant.</div>
+      <div class="homelab-title" data-i18n="homelab-audio-title">Audio &amp; Lighting</div>
+      <div class="homelab-desc" data-i18n="homelab-audio-desc">Analog mixing desks, speaker systems and smart LED rigs. I solder my own XLR and P10 cables, know my way around live audio, and love learning more about sound engineering.</div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <p class="section-label">// contact</p>
-  <h2 class="section-title">Get In <span>Touch</span></h2>
-  <p class="sub">I'm open to opportunities, freelance work or just a conversation.</p>
+  <p class="section-label" data-i18n="contact-label">// contact</p>
+  <h2 class="section-title" data-i18n="contact-title">Get In <span>Touch</span></h2>
+  <p class="sub" data-i18n="contact-sub">I'm open to opportunities, freelance work or just a conversation.</p>
   <div class="contact-links reveal">
-    <a href="https://www.linkedin.com/in/andr%C3%A9-pereira-3b85333a9/" target="_blank" class="btn btn-primary">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/andr%C3%A9-pereira-3b85333a9/" target="_blank" class="btn btn-primary" data-i18n="contact-linkedin">LinkedIn</a>
     <a href="mailto:afopereira10@gmail.com" class="btn btn-secondary">afopereira10@gmail.com</a>
-    <a href="https://github.com/ManoDre-27" target="_blank" class="btn btn-secondary">GitHub</a>
+    <a href="https://github.com/ManoDre-27" target="_blank" class="btn btn-secondary" data-i18n="contact-github">GitHub</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>Built by André Pereira · 2026 · Portugal</p>
+  <p data-i18n="footer-text">Built by André Pereira · 2026 · Portugal</p>
 </footer>
 
 <script>
-  // Scroll reveal
+  // ── TRANSLATIONS ──────────────────────────────────────────────────
+  const translations = {
+    en: {
+      'nav-about':    'About',
+      'nav-skills':   'Skills',
+      'nav-projects': 'Projects',
+      'nav-homelab':  'Homelab',
+      'nav-contact':  'Contact',
+
+      'hero-tag':          'Open to work 🚀',
+      'hero-name':         "Hi, I'm <span>André Pereira</span>",
+      'hero-role':         'Full-Stack &amp; Mobile Developer · Portugal 🇵🇹',
+      'hero-desc':         'I build web apps, Android apps and desktop software. Self-taught, just finished secondary school, already shipped real projects.',
+      'hero-btn-projects': 'View Projects',
+      'hero-btn-contact':  'Contact Me',
+      'hero-scroll':       'scroll',
+
+      'about-label': '// about',
+      'about-title': 'Who I <span>Am</span>',
+      'about-p1':    "I'm a self-taught developer from Portugal who just finished secondary school. Instead of waiting to learn at university, I spent the last two years building <strong>real projects</strong> — a full SaaS gym platform and a desktop app delivered to a real company during my internship.",
+      'about-p2':    "I'm comfortable across the full stack: PHP backends, REST APIs, vanilla JS frontends, Flutter mobile apps, and C# desktop software. Outside of code, I run a <strong>Proxmox homelab</strong> with Home Assistant and enjoy audio and lighting setups.",
+      'about-p3':    "I'm looking for my <strong>first professional role</strong> where I can keep building things that matter.",
+
+      'stat-shipped':    'Projects Shipped',
+      'stat-internship': 'Internship',
+      'stat-tech':       'Technologies',
+      'stat-based':      'Based in Portugal',
+
+      'skills-label':       '// skills',
+      'skills-title':       'Tech <span>Stack</span>',
+      'skill-backend':      'Backend',
+      'skill-frontend':     'Frontend',
+      'skill-mobile':       'Mobile',
+      'skill-desktop':      'Desktop',
+      'skill-integrations': 'Integrations',
+      'skill-tools':        'Tools',
+
+      'projects-label': '// projects',
+      'projects-title': "What I've <span>Built</span>",
+
+      'fitlife-badge': 'Open Source',
+      'fitlife-title': '🏋️ FitLife Gym',
+      'fitlife-desc':  'Full-stack SaaS-style gym management platform with three role-based dashboards (Admin, Trainer, Client) and a companion Flutter Android app. Integrates Stripe payments, OpenAI and email notifications.',
+      'fitlife-link':  'View Repo',
+
+      'newness-badge1': 'Private',
+      'newness-badge2': 'Internship @ Newness',
+      'newness-title':  '🔐 Password &amp; Invoice Manager',
+      'newness-desc':   'Desktop application built during my internship at <strong>Newness</strong>, a Portuguese company. Manages internal credentials and invoices in a single secure interface. Delivered and used in production.',
+      'newness-link':   'Private — Internship Agreement',
+
+      'passvb-badge': 'Open Source',
+      'passvb-title': '🔑 Password Manager Desktop',
+      'passvb-desc':  'Full-featured Windows desktop app for managing passwords and client records. Includes login system, categorised password vault, statistics dashboard, Crystal Reports integration and configurable ODBC database connection.',
+      'passvb-link':  'View Repo',
+
+      'estate-badge': 'Open Source',
+      'estate-title': '🏠 Real Estate Manager',
+      'estate-desc':  'C# console application for managing property listings with full CRUD operations. Add, edit, delete, list and search properties by name. Demonstrates struct usage, array manipulation and clean menu-driven architecture.',
+      'estate-link':  'View Repo',
+
+      'euro-badge': 'Open Source',
+      'euro-title': '🎰 Euromilhões Simulator',
+      'euro-desc':  'C# console app that simulates a Euromilhões lottery draw. Generates random numbers and stars, then sorts them using a hand-written BubbleSort algorithm.',
+      'euro-link':  'View Repo',
+
+      'homelab-label':          '// beyond code',
+      'homelab-title':          'My <span>Homelab</span>',
+      'homelab-proxmox-title':  'Proxmox Server',
+      'homelab-proxmox-desc':   'Home server running multiple VMs and LXC containers. Self-host everything I can.',
+      'homelab-ha-title':       'Home Assistant',
+      'homelab-ha-desc':        'Full home automation — lights, scenes, routines and integrations across devices.',
+      'homelab-audio-title':    'Audio &amp; Lighting',
+      'homelab-audio-desc':     'Analog mixing desks, speaker systems and smart LED rigs. I solder my own XLR and P10 cables, know my way around live audio, and love learning more about sound engineering.',
+
+      'contact-label':    '// contact',
+      'contact-title':    'Get In <span>Touch</span>',
+      'contact-sub':      "I'm open to opportunities, freelance work or just a conversation.",
+      'contact-linkedin': 'LinkedIn',
+      'contact-github':   'GitHub',
+
+      'footer-text': 'Built by André Pereira · 2026 · Portugal',
+    },
+
+    pt: {
+      'nav-about':    'Sobre',
+      'nav-skills':   'Stack',
+      'nav-projects': 'Projetos',
+      'nav-homelab':  'Homelab',
+      'nav-contact':  'Contacto',
+
+      'hero-tag':          'Disponível para trabalhar 🚀',
+      'hero-name':         "Olá, sou o <span>André Pereira</span>",
+      'hero-role':         'Programador Full-Stack &amp; Mobile · Portugal 🇵🇹',
+      'hero-desc':         'Desenvolvo web apps, apps Android e software desktop. Autodidata, acabei o secundário e já entreguei projetos reais.',
+      'hero-btn-projects': 'Ver Projetos',
+      'hero-btn-contact':  'Contacta-me',
+      'hero-scroll':       'scroll',
+
+      'about-label': '// sobre',
+      'about-title': 'Quem <span>Sou</span>',
+      'about-p1':    'Sou um programador autodidata de Portugal que acabou o secundário. Em vez de esperar pela universidade, passei os últimos dois anos a construir <strong>projetos reais</strong> — uma plataforma SaaS de gestão de ginásio e uma app desktop entregue a uma empresa real durante o meu estágio.',
+      'about-p2':    'Domino toda a stack: backends PHP, REST APIs, frontends vanilla JS, apps móveis Flutter e software desktop em C#. Fora do código, mantenho um <strong>homelab com Proxmox</strong> com Home Assistant e tenho paixão por sistemas de som e iluminação.',
+      'about-p3':    'Estou à procura do meu <strong>primeiro emprego</strong> onde possa continuar a construir coisas que importam.',
+
+      'stat-shipped':    'Projetos Entregues',
+      'stat-internship': 'Estágio',
+      'stat-tech':       'Tecnologias',
+      'stat-based':      'Portugal',
+
+      'skills-label':       '// stack',
+      'skills-title':       'Stack <span>Técnica</span>',
+      'skill-backend':      'Backend',
+      'skill-frontend':     'Frontend',
+      'skill-mobile':       'Mobile',
+      'skill-desktop':      'Desktop',
+      'skill-integrations': 'Integrações',
+      'skill-tools':        'Ferramentas',
+
+      'projects-label': '// projetos',
+      'projects-title': 'O Que <span>Construí</span>',
+
+      'fitlife-badge': 'Código Aberto',
+      'fitlife-title': '🏋️ FitLife Gym',
+      'fitlife-desc':  'Plataforma SaaS de gestão de ginásio com três dashboards por role (Admin, Treinador, Cliente) e app Flutter Android. Integra pagamentos Stripe, OpenAI e notificações por email.',
+      'fitlife-link':  'Ver Repositório',
+
+      'newness-badge1': 'Privado',
+      'newness-badge2': 'Estágio @ Newness',
+      'newness-title':  '🔐 Gestor de Passwords e Faturas',
+      'newness-desc':   'Aplicação desktop desenvolvida durante o estágio na <strong>Newness</strong>, empresa portuguesa. Gere credenciais internas e faturas numa única interface segura. Entregue e em uso em produção.',
+      'newness-link':   'Privado — Acordo de Estágio',
+
+      'passvb-badge': 'Código Aberto',
+      'passvb-title': '🔑 Gestor de Passwords Desktop',
+      'passvb-desc':  'App Windows completa para gestão de passwords e clientes. Inclui sistema de login, cofre de passwords por categoria, dashboard de estatísticas, integração Crystal Reports e ligação ODBC configurável.',
+      'passvb-link':  'Ver Repositório',
+
+      'estate-badge': 'Código Aberto',
+      'estate-title': '🏠 Gestor Imobiliário',
+      'estate-desc':  'Aplicação de consola em C# para gerir listagens de propriedades com CRUD completo. Adicionar, editar, eliminar, listar e pesquisar propriedades. Demonstra uso de structs, arrays e menus.',
+      'estate-link':  'Ver Repositório',
+
+      'euro-badge': 'Código Aberto',
+      'euro-title': '🎰 Simulador de Euromilhões',
+      'euro-desc':  'App de consola em C# que simula um sorteio do Euromilhões. Gera números e estrelas aleatórios e ordena-os com um algoritmo BubbleSort escrito manualmente.',
+      'euro-link':  'Ver Repositório',
+
+      'homelab-label':          '// além do código',
+      'homelab-title':          'O Meu <span>Homelab</span>',
+      'homelab-proxmox-title':  'Servidor Proxmox',
+      'homelab-proxmox-desc':   'Servidor caseiro com várias VMs e containers LXC. Auto-hospedo tudo o que consigo.',
+      'homelab-ha-title':       'Home Assistant',
+      'homelab-ha-desc':        'Automação doméstica completa — luzes, cenas, rotinas e integrações em todos os dispositivos.',
+      'homelab-audio-title':    'Som &amp; Iluminação',
+      'homelab-audio-desc':     'Mesas de mistura analógicas, sistemas de colunas e iluminação LED inteligente. Soldo os meus próprios cabos XLR e P10, percebo de som ao vivo e tenho muito gosto em aprender mais sobre engenharia de som.',
+
+      'contact-label':    '// contacto',
+      'contact-title':    'Fala <span>Comigo</span>',
+      'contact-sub':      'Estou aberto a oportunidades, trabalho freelance ou apenas uma conversa.',
+      'contact-linkedin': 'LinkedIn',
+      'contact-github':   'GitHub',
+
+      'footer-text': 'Desenvolvido por André Pereira · 2026 · Portugal',
+    }
+  };
+
+  // ── STATE ─────────────────────────────────────────────────────────
+  let currentLang = localStorage.getItem('lang') || 'en';
+
+  function applyLang(lang) {
+    const dict = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) {
+        el.innerHTML = dict[key];
+      }
+    });
+    document.documentElement.lang = lang === 'pt' ? 'pt-PT' : 'en';
+    document.getElementById('lang-toggle').textContent = lang === 'pt' ? 'EN' : 'PT';
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+  }
+
+  function toggleLang() {
+    applyLang(currentLang === 'en' ? 'pt' : 'en');
+  }
+
+  // Apply saved preference on load
+  applyLang(currentLang);
+
+  // ── SCROLL REVEAL ─────────────────────────────────────────────────
   const observer = new IntersectionObserver(
     entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
     { threshold: 0.1 }
